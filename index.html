@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>YoyBuy spreadsheet | Van productlink tot pakket</title>
+  <meta name="description" content="Gebruik de YoyBuy spreadsheet-gids om productlinks, maten, QC-foto’s en verzendkosten te vergelijken. Blader door tien categorieën op HipobuyFind.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#3b2130">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:title" content="YoyBuy spreadsheet | Van productlink tot pakket">
+  <meta property="og:description" content="Controleer productlinks en maten, beoordeel QC-foto’s en maak een pakketraming. Bekijk tien categorieën op HipobuyFind.">
+  <meta property="og:image" content="https://i5.walmartimages.com/seo/Men-s-Nike-Dunk-Low-Retro-Panda-2021-DD1391-100_d5f08c9e-1cbb-452a-8e99-d3053640e9a2.be83ab2cc5e3ca2c1a8e848ef9f516d3.jpeg?odnBg=FFFFFF&amp;odnHeight=768&amp;odnWidth=768">
+  <meta property="og:image:alt" content="Zwart-witte Nike Dunk Low Retro in zijaanzicht">
+  <link rel="preconnect" href="https://i5.walmartimages.com">
+  <!--
+    Redactionele bronnotitie: de eerste tien Google-resultaten waren niet rechtstreeks verifieerbaar.
+    De beschikbare zoekresultaten van tien domeinen dienden als referentie voor zoekintenties:
+    qcradar.com (bronlinks), yoybuy.org (categorieën), yoyubuy.com (outfitselectie),
+    yoybuysheet.com (maat en QC), htv4.yinaojiyi.com (filters), bbd-buy.org (kostenopbouw),
+    lovegobuy.tips (bestelroute), yoybuyindex.com (broncontrole, alleen zoekfragment),
+    yoybuy.digital (catalogusnavigatie), yoybuy.com (helpcentrum en verzendopties).
+    De uiteindelijke publicatie-URL is onbekend.
+  -->
+  <style>
+    :root{color-scheme:light;--paper:#f8f4ed;--ink:#3b2130;--muted:#63535b;--line:#d9cbd1;--lime:#e6f28a;--white:#fff}
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.58 system-ui,sans-serif}
+    h1,h2,h3,p,figure{margin:0}
+    h1,h2,h3{line-height:1.12;letter-spacing:-.035em}
+    h1{font-size:clamp(2.55rem,6.5vw,5.6rem);max-width:11ch}
+    h2{font-size:clamp(1.7rem,3.5vw,2.8rem)}
+    h3{font-size:1.3rem}
+    a{color:inherit;text-underline-offset:.2em}
+    :focus-visible{outline:3px solid #8c3064;outline-offset:4px}
+    .wrap{width:min(72rem,calc(100% - 2rem));margin-inline:auto}
+    .mast,.foot{background:var(--ink);color:var(--white)}
+    .mast .wrap,.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:.45rem 1.3rem;flex-wrap:wrap;padding-block:.85rem}
+    .mast a,.foot a{font-weight:850}
+    .mast a:focus-visible,.foot a:focus-visible{outline-color:var(--lime)}
+    .label{font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+    .hero{display:grid;grid-template-columns:1.3fr 1fr;align-items:stretch;gap:1rem;padding-top:1rem}
+    .intro,.cover{border-radius:1rem;overflow:hidden}
+    .intro{background:var(--lime);padding:clamp(1.25rem,4vw,3.2rem);display:grid;align-content:center;justify-items:start;gap:.9rem}
+    .intro p:not(.label){max-width:51ch}
+    .button{display:inline-block;background:var(--ink);color:var(--white);padding:.65rem 1rem;border-radius:.4rem;font-weight:750;text-decoration:none}
+    .button:hover{text-decoration:underline}
+    .cover{background:var(--white);display:grid;grid-template-rows:1fr auto}
+    img{display:block;width:100%;height:auto}
+    .cover img{height:100%;max-height:24rem;min-height:0;object-fit:contain}
+    figcaption{padding:.65rem .85rem;font-size:.88rem;color:var(--muted)}
+    .cover figcaption{border-top:1px solid var(--line)}
+    .block{margin-block:2.5rem}
+    .head{margin-bottom:1rem}
+    .head p{margin-top:.45rem;color:var(--muted)}
+    .categories,.gallery{list-style:none;padding:0;margin:0;display:grid;gap:.55rem}
+    .categories{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .categories a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:.3rem;min-height:3.35rem;height:100%;padding:.55rem .65rem;border:1px solid var(--line);border-radius:.45rem;background:var(--white);font-size:.9rem;font-weight:750;text-decoration:none;overflow-wrap:anywhere}
+    .categories a:hover{background:var(--lime);text-decoration:underline}
+    .reading{display:grid;grid-template-columns:1fr 2fr;gap:clamp(1rem,5vw,4rem);border-top:2px solid var(--ink);padding-top:1.25rem}
+    .reading .head{max-width:31ch}
+    .entries article+article{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
+    .entries h3 span{display:inline-block;margin-right:.4rem;font-size:.82rem;letter-spacing:0;color:var(--muted)}
+    .entries p,.entries ul{margin:.6rem 0 0}
+    .entries ul{padding-left:1.2rem}
+    .gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gallery figure{background:var(--white);border:1px solid var(--line);border-radius:.55rem;overflow:hidden;height:100%}
+    .gallery img{aspect-ratio:1;object-fit:contain}
+    .gallery strong{display:block;color:var(--ink)}
+    .faq{border-top:2px solid var(--ink);padding-top:1.25rem}
+    details{border-bottom:1px solid var(--line)}
+    summary{padding:.85rem .25rem;font-weight:750;cursor:pointer}
+    details p{max-width:68ch;padding:0 .25rem .9rem}
+    .foot small{max-width:70ch}
+    @media(max-width:48rem){.categories{grid-template-columns:repeat(3,minmax(0,1fr))}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:38rem){.hero,.reading{grid-template-columns:1fr}.cover img{max-height:12rem}.categories{grid-template-columns:repeat(2,minmax(0,1fr))}.block{margin-block:1.8rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "nl",
+    "name": "YoyBuy spreadsheet | Van productlink tot pakket",
+    "description": "Nederlandstalige gids voor productlinks, maten, controlefoto’s en verzendkosten.",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wat is een YoyBuy spreadsheet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Het is een overzicht waarin je productlinks, varianten, maten en controlenotities kunt vergelijken. Op deze pagina vind je een onafhankelijke koopgids en tien categorielinks naar HipobuyFind."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hoe weet ik of de gekozen maat past?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Meet een vergelijkbaar kledingstuk dat goed zit en vergelijk de centimeters met de maattabel van de exacte variant. Vergelijk voor sneakers je voetlengte met de tabel van het specifieke model."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Zijn QC-foto’s bewijs van echtheid?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nee. Controlefoto’s helpen je zichtbare details, de gekozen variant en eventuele schade te beoordelen. Voor echtheid heb je afzonderlijke herkomstinformatie of deskundige verificatie nodig."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Waar zie ik wat verzending naar Nederland of België kost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vraag bij de vervoerder of aankoopdienst een offerte op voor jouw postcode, pakketafmetingen en verpakt gewicht. Controleer welke toeslagen en eventuele invoerkosten in het bedrag zijn opgenomen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan ik via deze gids bij YOYBUY bestellen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De gids is onafhankelijk. De categorielinks openen HipobuyFind. Deze pagina verwerkt geen bestellingen of betalingen voor YOYBUY."
+        }
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/hxvdt/">
+</head>
+<body>
+  <header class="mast">
+    <div class="wrap">
+      <a href="https://www.hipobuyfind.com">www.hipobuyfind.com</a>
+      <span class="label">Onafhankelijke koopgids</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="titel">
+      <div class="intro">
+        <p class="label">Van shortlist naar bestelling</p>
+        <h1 id="titel">YoyBuy spreadsheet</h1>
+        <p>Gebruik deze gids om schoenen, kleding en accessoires op een shortlist te zetten. Leg per optie de originele productlink, de gekozen variant en één open vraag vast. Zo weet je wat je vóór het bestellen nog moet controleren.</p>
+        <a class="button" href="https://www.hipobuyfind.com">Bekijk HipobuyFind</a>
+      </div>
+      <figure class="cover">
+        <img src="https://i5.walmartimages.com/seo/Men-s-Nike-Dunk-Low-Retro-Panda-2021-DD1391-100_d5f08c9e-1cbb-452a-8e99-d3053640e9a2.be83ab2cc5e3ca2c1a8e848ef9f516d3.jpeg?odnBg=FFFFFF&amp;odnHeight=768&amp;odnWidth=768" width="768" height="768" loading="eager" fetchpriority="high" alt="Zwart-witte Nike Dunk Low Retro in zijaanzicht">
+        <figcaption>Stijlvoorbeeld · Nike Dunk Low Retro</figcaption>
+      </figure>
+    </section>
+
+    <nav class="block" aria-labelledby="categorieen">
+      <div class="head">
+        <h2 id="categorieen">Blader op categorie</h2>
+        <p>De tien categorieën openen de bijbehorende pagina op HipobuyFind.</p>
+      </div>
+      <ul class="categories">
+        <li><a href="https://hipobuyfind.com/category-911-Shoes.html">Schoenen <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-912-Hoodies%2FSweaters.html">Hoodies en truien <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-913-T-Shirts.html">T-shirts <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-914-Jackets.html">Jassen <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-915-Pants%2FShorts.html">Broeken en shorts <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-916-Headwear.html">Petten en mutsen <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-917-Sets.html">Kledingsets <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-918-underwear%2Funderpants.html">Ondergoed <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-919-Jersey.html">Sportshirts <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://hipobuyfind.com/category-920-Accessories.html">Accessoires <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </nav>
+
+    <section class="block reading" aria-labelledby="koopgids">
+      <div class="head">
+        <p class="label">Drie praktische artikelen</p>
+        <h2 id="koopgids">YoyBuy koopgids</h2>
+        <p>Noteer bij elke optie wat je zelf hebt gecontroleerd en wat je nog aan de verkoper of aankoopdienst wilt vragen.</p>
+      </div>
+      <div class="entries">
+        <article>
+          <h3><span aria-hidden="true">01</span> YoyBuy productlinks controleren</h3>
+          <p>Open de oorspronkelijke productpagina en vergelijk de verkopersnaam, modelcode en kleurvariant met je notities. Test of de bronlink nog werkt en controleer de voorraad nadat je de juiste maat hebt gekozen. Voeg de datum van je laatste controle toe als je opties bewaart.</p>
+          <ul>
+            <li>Meet voor een hoodie de borstbreedte en mouwlengte van een trui die goed zit. Gebruik dezelfde meetmethode als op de maattabel.</li>
+            <li>Vergelijk voor sneakers je voetlengte in centimeters met de modelspecifieke schoenmaattabel. Vraag bij twijfel hoe de binnenzool is gemeten.</li>
+            <li>Controleer bij een kledingcombinatie of elk onderdeel dezelfde maat moet hebben. Noteer bij een pet de hoofdomtrek en het bereik van de sluiting.</li>
+          </ul>
+        </article>
+        <article>
+          <h3><span aria-hidden="true">02</span> YoyBuy QC-foto’s beoordelen</h3>
+          <p>Als je controlefoto’s uit een magazijn ontvangt, leg ze naast de foto’s van de gekozen variant. Begin met een totaalbeeld en zoom daarna in op de details die voor jouw aankoop doorslaggevend zijn.</p>
+          <ul>
+            <li>Vraag bij een jas om een detailfoto van de rits en zoom in op het stikwerk bij de manchetten. Een foto bij neutraal licht helpt bij kleurverschillen.</li>
+            <li>Bekijk voor schoenen het zoolprofiel en beide hielstukken. Vraag bij ontbrekende maatdetails om een foto van het maatlabel en, indien nodig, de binnenzool naast een meetlint.</li>
+            <li>Controleer bij sieraden de sluiting, lengte en zichtbare beschadigingen. Vraag hoe het materiaal is gespecificeerd als de productpagina daar vaag over is.</li>
+          </ul>
+        </article>
+        <article>
+          <h3><span aria-hidden="true">03</span> YoyBuy verzendkosten ramen</h3>
+          <p>Maak een raming met aparte regels voor de artikelprijs, binnenlandse verzending, eventuele servicekosten en internationale verzending. Controleer welke belastingen, inklaringskosten of verzekering al in de offerte zitten.</p>
+          <ul>
+            <li>Vraag naar het gewicht inclusief verpakking, de buitenmaten van de doos en de regels voor volumetrisch gewicht bij de gekozen verzendmethode.</li>
+            <li>Vergelijk pakketconsolidatie met aparte verzending op basis van de verpakte afmetingen. Een schoenendoos kan meer ruimte innemen dan je verwacht.</li>
+            <li>Gebruik voor levering naar Nederland of België je eigen postcode bij de aanvraag. Noteer de voorwaarden voor tracking en de uiterste datum voor een retourverzoek.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="beeldgids">
+      <div class="head">
+        <h2 id="beeldgids">Vier details om op te letten</h2>
+        <p>De merkfoto’s dienen als stijlvoorbeelden bij de checklist.</p>
+      </div>
+      <ul class="gallery">
+        <li><figure>
+          <img src="https://de.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-t-shirt-aus-baumwolle-mit-monogram--HPY15WNPG815_PM2_Front%20view.jpg" width="600" height="600" loading="lazy" decoding="async" alt="Licht Louis Vuitton T-shirt met monogrampatroon">
+          <figcaption><strong>Louis Vuitton · T-shirt</strong> Bekijk de halsboord en de verdeling van het patroon.</figcaption>
+        </figure></li>
+        <li><figure>
+          <img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1751298339/838745_3HBC4_2600_001_100_0000_Light.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Beige en bruine Gucci-pet met GG-patroon">
+          <figcaption><strong>Gucci · Pet</strong> Let op de vorm van de klep en de afwerking van de rand.</figcaption>
+        </figure></li>
+        <li><figure>
+          <img src="https://a.1stdibscdn.com/hermes-chaine-dancre-bracelet-in-925-sterling-silver-for-sale/22569652/j_169569521662976874245/j_16956952_1662976875161_bg_processed.jpg?width=768" width="768" height="768" loading="lazy" decoding="async" alt="Zilverkleurige Hermès Chaîne d’Ancre armband met ankerschakels">
+          <figcaption><strong>Hermès · Armband</strong> Vraag naar de lengte en bekijk de schakelverbindingen.</figcaption>
+        </figure></li>
+        <li><figure>
+          <img src="https://assets.christiandior.com/is/image/diorprod/683M207A7040C585_E01-1?%24default_GH%24=&amp;crop=500%2C161%2C994%2C1662&amp;extend=0%2C0%2C0%2C250&amp;hei=2000&amp;scale=0.875&amp;wid=1850" width="1850" height="2000" loading="lazy" decoding="async" alt="Blauwe Dior Oblique bomberjas met jacquardpatroon">
+          <figcaption><strong>Dior · Bomberjas</strong> Vergelijk de ribboorden, ritssluiting en mouwvorm.</figcaption>
+        </figure></li>
+      </ul>
+    </section>
+
+    <section class="block faq" aria-labelledby="vragen">
+      <div class="head"><h2 id="vragen">Veelgestelde vragen</h2></div>
+      <details>
+        <summary>Wat is een YoyBuy spreadsheet?</summary>
+        <p>Het is een overzicht waarin je productlinks, varianten, maten en controlenotities kunt vergelijken. Op deze pagina vind je een onafhankelijke koopgids en tien categorielinks naar HipobuyFind.</p>
+      </details>
+      <details>
+        <summary>Hoe weet ik of de gekozen maat past?</summary>
+        <p>Meet een vergelijkbaar kledingstuk dat goed zit en vergelijk de centimeters met de maattabel van de exacte variant. Vergelijk voor sneakers je voetlengte met de tabel van het specifieke model.</p>
+      </details>
+      <details>
+        <summary>Zijn QC-foto’s bewijs van echtheid?</summary>
+        <p>Nee. Controlefoto’s helpen je zichtbare details, de gekozen variant en eventuele schade te beoordelen. Voor echtheid heb je afzonderlijke herkomstinformatie of deskundige verificatie nodig.</p>
+      </details>
+      <details>
+        <summary>Waar zie ik wat verzending naar Nederland of België kost?</summary>
+        <p>Vraag bij de vervoerder of aankoopdienst een offerte op voor jouw postcode, pakketafmetingen en verpakt gewicht. Controleer welke toeslagen en eventuele invoerkosten in het bedrag zijn opgenomen.</p>
+      </details>
+      <details>
+        <summary>Kan ik via deze gids bij YOYBUY bestellen?</summary>
+        <p>De gids is onafhankelijk. De categorielinks openen HipobuyFind. Deze pagina verwerkt geen bestellingen of betalingen voor YOYBUY.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <a href="https://www.hipobuyfind.com">www.hipobuyfind.com</a>
+      <small>Onafhankelijke gids. Merknamen en afbeeldingen dienen ter illustratie.</small>
+    </div>
+  </footer>
+</body>
+</html>
